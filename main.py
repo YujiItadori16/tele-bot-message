@@ -30,9 +30,11 @@ def main() -> None:
     token = os.getenv("BOT_TOKEN")
     if not token:
         raise RuntimeError("Missing BOT_TOKEN env var.")
-    webhook_base = os.getenv("WEBHOOK_URL")  # e.g. https://your-app.onrender.com
+    webhook_base = os.getenv("WEBHOOK_URL") or os.getenv("RENDER_EXTERNAL_URL")
     if not webhook_base:
-        raise RuntimeError("Missing WEBHOOK_URL env var (example: https://your-app.onrender.com)")
+        raise RuntimeError(
+            "Missing WEBHOOK_URL/RENDER_EXTERNAL_URL. Set WEBHOOK_URL to your Render service URL."
+        )
 
     port = int(os.getenv("PORT", "10000"))  # Render sets PORT automatically
 
