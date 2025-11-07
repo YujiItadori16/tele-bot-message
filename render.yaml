@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: telegram-photo-bot-web
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: WEBHOOK_URL
+        sync: false
+      - key: CAPTION
+        value: free youtube premium giveaway
+      - key: BUTTON_TEXT
+        value: Click here
+      - key: BUTTON_URL
+        value: https://t.me/Playerstatsandnews
+      - key: PHOTO_PATH
+        value: promo.jpg
